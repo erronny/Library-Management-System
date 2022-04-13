@@ -135,6 +135,7 @@ It is an instance method when we search or call for Book Module from anywhere, t
         return self.title
 ```
 
+Below we importing render function Http Response function to except route hits, when route hits by user this function response on behalf of type of requests. We also importing login required decorator from auth. Django have built-in decorator we are using them for validation, When any user try to acess that view function these function rejects the request and return error response, OR redirect to login and sign up page. Decorator is an sepcial kind of function that add some special and common functionlity in existing function. It's like decorating christmas tree, tree is an existing function and decorated things are decorator function. 
 
 ```
 from django.shortcuts import render
