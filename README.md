@@ -1,7 +1,9 @@
 # Library-Management-System
 ### OverView
 1. Version
-2. 
+2. Database
+3. Migrate & Operations
+4. 
 
 
 ### Versions 
@@ -100,7 +102,13 @@ Running migrations:
 
 
 
+### Book Module/app segment
+Here we are going to write some code to work on database. Here we considering 5 main details of books. i.e Title, summary, Author, Book Code and No Of book available. Some other fields are required for django system and for making things easy. i.e id field is not mandatory it'll created automatically.
 
+Status(Boolean):- We will show only active book so we are using status ```True``` by-default.
+is_deleted(Boolean) : - We are going to to use soft delete concept here it stores ```False``` by-default, when delete operation performed book never be deleted, it will change into ```True``` As like Trash Bin.
+created_at:- This is DateTime fields that stores when book is created.
+updated_at:- This is also an DateTime fields that store when last time book is updated.
 
 
 ```
@@ -120,6 +128,7 @@ class Book(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(auto_now=True)
 ```
+It is an instance method when we search or call for Book Module from anywhere, this function returns their title. We can return Book Code or and author as well.
 ```
 
     def __str__(self):
