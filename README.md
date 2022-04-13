@@ -1,12 +1,17 @@
 # Library-Management-System
+### OverView
+1. Version
+2. 
 
-Versions 
+
+### Versions 
 Python - 3.8.10 \
 Django - 2.2.6
 
 
 Download and extract the zip file. Try ```python3 manage.py runserver``` If server not started or if you wanted to perform migrations operations follow these steps:-
 
+### Database
 ```
 DATABASES = {
     'default': {
@@ -31,9 +36,12 @@ put your mysql details as like above. If you didn't want to use MySql then comme
 Uncomment these lines to use DBSqLite.
 I Have uploaded database file also if not works use them in worst case secanerio.
 
-
+### Migrate & Operations
+Make migrations of Auth app for Auth database table
 ```python3 manage.py makemigrations Auth```
 
+
+<b>Output</b>
 ```
 Migrations for 'Auth':
   Apps/Auth/migrations/0001_initial.py
@@ -42,14 +50,18 @@ Migrations for 'Auth':
     - Create model User
     - Create model Profile
 ```
+Make migrations of Book App for Book database table
 ```python3 manage.py makemigrations Book```
 
+<b>Output</b>
 ```
 Migrations for 'Book':
   Apps/Book/migrations/0001_initial.py
     - Create model Book
 ```
+Now Migrate
 ```python3 manage.py migrate```
+<b>Output</b>
 
 ```
 Operations to perform:
