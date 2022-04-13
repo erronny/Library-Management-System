@@ -1,0 +1,120 @@
+{% extends 'admin/layouts/base.html' %}
+
+{% block breadcrumb %}
+<div class="pagetitle" xmlns="http://www.w3.org/1999/html">
+      <h1>Employee</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="{% url 'Book:book'  %}">Employee</a></li>
+          <li class="breadcrumb-item active">Add</li>
+        </ol>
+      </nav>
+      <nav class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary" style="align:right" href="{% url 'Book:book'  %}"><span>
+          <i class="bi bi-arrow-left-circle-fill"></i>  Back</span></a></br>
+       </nav>
+    </div><!-- End Page Title -->
+{% endblock breadcrumb %}
+
+{% block content %}
+
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+        <div class="card">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header primary">
+                <h5 class="card-title">Add Book</h5>
+              </div>
+                <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+              <div class="modal-body">
+                  <!-- Error caching              -->
+                <ul class="errorlist">
+                  {% if form.non_field_errors %}
+                  <div class="alert alert-danger">
+                    <li><strong>{{ form.non_field_errors }}</strong></li>
+                  </div>
+                  {% endif %}
+
+                  {% for field in form %}
+                    {% if field.errors %}
+                      <li>
+                          <div class="alert alert-danger">
+                            {{ field.label }}
+                            <ul class="errorlist">
+                              {% for error in field.errors %}
+                              <li><strong>{{ error }}</strong></li>
+                                  {% endfor %}
+                            </ul>
+                        </div>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+                   <!-- Erro cacthing              -->
+                   <!-- General Form Elements -->
+
+                
+
+                  <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Title</label>
+                  <div class="col-sm-10">
+                            {{ form.title }}
+                      <small class="alert-warning">{{ form.title.errors }}</small>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Author</label>
+                  <div class="col-sm-10">
+                            {{ form.author }}
+                      <small class="alert-warning">{{ form.author.errors }}</small>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Book Code</label>
+                  <div class="col-sm-10">
+                            {{ form.book_code }}
+                      <small class="alert-warning">{{ form.book_code.errors }}</small>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">No of Book</label>
+                  <div class="col-sm-10">
+                            {{ form.no_of_book }}
+                      <small class="alert-warning">{{ form.no_of_book.errors }}</small>
+                  </div>
+                </div>
+                   <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Summary</label>
+                  <div class="col-sm-10">
+                            {{ form.summary }}
+                      <small class="alert-warning">{{ form.summary.errors }}</small>
+                  </div>
+                
+
+
+                <!-- General Form Elements -->
+              </div>
+
+              <div class="card-footer">
+                <div class="row mb-12">
+                  <button type="submit" style="width:" class="btn btn-primary mb-12">Add</button>
+              </div>
+              </div>
+                </form>
+            </div>
+            </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+{% endblock content %}

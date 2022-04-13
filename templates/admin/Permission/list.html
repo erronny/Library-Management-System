@@ -1,0 +1,66 @@
+{% extends 'admin/layouts/base.html' %}
+
+{% block breadcrumb %}
+    <div class="pagetitle">
+      <h1>Organization</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="{% url 'Organization:organization'  %}">Organization</a></li>
+          <li class="breadcrumb-item active">List</li>
+        </ol>
+      </nav>
+      <nav class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary" style="align:right" href="{% url 'Organization:create_organization'  %}">
+          <span  ><i class="bx bx-plus-circle"></i></span></a></br>
+       </nav>
+    </div><!-- End Page Title -->
+{% endblock breadcrumb %}
+
+{% block content %}
+
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for data in dataset %}
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>{{ data.org_name }}</td>
+                    <td>{{ data.org_code }}</td>
+                    <td>{{ data.org_mobile_no }}</td>
+                    <td>
+                      <a class="btn btn-outline-primary" href="{% url 'Organization:change_organization' data.id %}"><i class="bi bi-pencil-square"></i></a>
+                      <a class="btn btn-outline-info" href="{% url 'Organization:view_organization' data.id %}"><i class="bi bi-eye-fill"></i></a>
+                      <a class="btn btn-outline-danger" href="{% url 'Organization:view_organization' data.id %}"><i class="bi bi-trash"></i></a>
+                    </td>
+                  </tr>
+                {% endfor %}
+
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+{% endblock content %}

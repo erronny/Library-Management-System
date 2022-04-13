@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<html lang="en">
+
+<head>
+  {% include "admin/includes/head.html" %}
+</head>
+
+<body>
+
+ # header
+  {% include "admin/includes/header.html" %}
+ {% include "admin/includes/sidebar.html" %}
+
+
+
+  <main id="main" class="main">
+    {% block breadcrumb %}{% endblock breadcrumb %}
+    {% block content %}{% endblock content %}
+  </main><!-- End #main -->
+  {% include "admin/includes/footer.html" %}
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="{% static 'admin/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/chart.js/chart.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/quill/quill.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'admin/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'admin/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'admin/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+{% extends 'admin/layouts/base.html' %}
+
+{% block breadcrumb %}
+    <div class="pagetitle">
+      <h1>Create Exam</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Exam</li>
+          <li class="breadcrumb-item active">Add</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+{% endblock breadcrumb %}
+
+{% block content %}
+<section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              </br>
+                  <a class="badge bg-success" href="{% url 'Auth:users'  %}"><span  >User List</span></a>
+              </br></br>
+
+              <!-- General Form Elements -->
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Using the formset -->
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">First Name</label>
+                  <div class="col-sm-10">
+                    {{ form.first_name }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Last Name</label>
+                  <div class="col-sm-10">
+                    {{ form.last_name }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    {{ form.email }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    {{ form.password }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Confirm Password</label>
+                  <div class="col-sm-10">
+                    {{ form.password_2 }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Superuser</label>
+                  <div class="col-sm-3">
+                    {{ form.is_superuser }}
+                  </div>
+                </div>
+                  <div class="row mb-3">
+                   <label class="col-sm-2 col-form-label">Active</label>
+                  <div class="col-sm-3">
+                    {{ form.is_active }}
+                  </div>
+                  </div>
+                  <div class="row mb-3">
+                   <label class="col-sm-2 col-form-label">Staff</label>
+                  <div class="col-sm-3">
+                    {{ form.is_staff }}
+                  </div>
+                </div>
+
+
+
+
+
+                <div class="row mb-3">
+
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                  </div>
+                </div>
+
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </section>
+{% endblock content %}

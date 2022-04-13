@@ -1,0 +1,22 @@
+{% extends 'admin/layouts/base.html' %}
+
+{% block breadcrumb %}
+     <div class="pagetitle">
+      <h1>Book</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="{% url 'Book:book'  %}">Book</a></li>
+          <li class="breadcrumb-item active">Add</li>
+        </ol>
+      </nav>
+      <nav class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary" style="align:right" href="{% url 'Book:book'  %}"><span>
+          <i class="bi bi-arrow-left-circle-fill"></i>  Back</span></a></br>
+       </nav>
+    </div><!-- End Page Title -->
+{% endblock breadcrumb %}
+
+{% block content %}
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'admin/layouts/base.html' %}
+
+{% block breadcrumb %}
+ <div class="pagetitle">
+      <h1>Form Elements</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
+        </ol>
+      </nav>
+    </div>
+{% endblock breadcrumb %}
+
+{% block content %}
+ <section class="section">
+      <div class="row">
+
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ data.first_name }} {{ data.last_name }}</h5>
+
+              <!-- Advanced Form Elements -->
+              <form>
+                <div class="row mb-5">
+                  <label class="col-sm-2 col-form-label">Info</label>
+                  <div class="col-sm-10">
+                    <div class="form-check form-switch">
+                      <label class="form-check-label">Email</label>
+                      <label class="form-check-label" >{{ data.email }}</label>
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+{% endblock content %}
