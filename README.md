@@ -1,7 +1,7 @@
 # Library-Management-System
 
 Versions 
-Python - 3.8.10
+Python - 3.8.10 \
 Django - 2.2.6
 
 
