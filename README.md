@@ -1,17 +1,21 @@
 # Library-Management-System
 ### OverView
-1. Version
-2. Database
-3. Migrate & Operations
-4. Book Module/app segment
-5. Auth Module/app segment
+1. Executive Summary
+3. System Overview
+4. Guidlines
+5. Version
+6. Database
+7. Migrate & Operations
+8. Book Module/app segment
+9. Auth Module/app segment
 
 ### Executive Summary
-As we know, every web app depends upon CRUD Operations.
+As we know, every web app depends upon CRUD Operations, And we also going to focus on mostly CRUD. Cread, Read Update and Delete are permformed by in almost every software. Here we are not talking about code optimization, consider if your website takes too longer time for creating comments user get frustrated and leave b/w operation. Here we are not going to perform whole operation, we are going to talk about book and Auth module, that contains majorly CRUD. 
 
-### System Overview
+
+
 ### Guidlines
-
+Here we didn't follow standard documentry rules, we are going to explain in form of blog. Nowadays blog format are more effective, writing a log is easy and can be completed in one day so we using this format. Read entire atricle to understand whats inside the appliocation.
 
 ### Versions 
 Python - 3.8.10 \
