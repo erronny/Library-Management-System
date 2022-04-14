@@ -890,13 +890,14 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
 ```
 #### Signup
 ```
+```
+
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
 from .forms import SignUpForm
-```
-```
+
 
 def signup(request):
     if request.method == 'POST':
@@ -913,3 +914,4 @@ def signup(request):
     return render(request, 'admin/User/create.html', {'form': form})
 ```
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand&layout=compact"/>
