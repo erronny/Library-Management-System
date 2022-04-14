@@ -559,89 +559,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.is_active
  ```
  
- #### User View Functions
- 
- ```
- # import datetime
-from datetime import datetime, date, timedelta
-from django.http import HttpResponse
-from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
-from django.views.generic import TemplateView, CreateView
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
-
-from Apps.Book.models import Book
-from django.utils import timezone
-
-# relative import of forms
-from .models import Group, Permission, UserManager
-from .forms import RegisterForm, UserCreateForm, UserEditForm, UserForm, ProfileForm, GroupForm, ChangeGroupForm, \
-    PermissionForm, ChangePermissionForm
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
 
 
-```
-#### Dashboard
-```
 
-
-def index(request):
-    # Filter messages with specified Date and Time
-    today_date = datetime.today().date
-    today_month = datetime.today().month
-    today_year = datetime.today().year
-    today = date.today().strftime("%Y-%m-%d")
-    first_date_of_month = datetime.today().replace(day=1).strftime('%Y-%m-%d')
-    first_date_of_year = date(date.today().year, 1, 1).strftime('%Y-%m-%d')
-
-    date_str = today
-    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-    first_date_of_week = date_obj - timedelta(days=date_obj.weekday())
-
-   
-    # today data
-    count_user_today = User.objects.filter(is_active=1, status=True, is_deleted=False, created_at__gte=today).count()
-    count_book_today = Book.objects.filter(status=True, is_deleted=False, created_at__gte=today).count()
-    # this week
-    count_user_this_week = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                               created_at__range=[first_date_of_week, today]).count()
-    count_book_this_week = Book.objects.filter(status=True, is_deleted=False,
-                                                       created_at__range=[first_date_of_week, today]).count()
-     # this month data
-    count_user_this_month = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                                created_at__range=[first_date_of_month, today]).count()
-    count_book_this_month = Book.objects.filter(status=True, is_deleted=False,
-                                                        created_at__range=[first_date_of_month, today]).count()
-    # this year data
-    count_user_this_year = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                               created_at__range=[first_date_of_year, today]).count()
-    count_book_this_year = Book.objects.filter(status=True, is_deleted=False,
-                                                       created_at__range=[first_date_of_year, today]).count()
-    today_dataset = User.objects.filter(is_active=1, status=True, is_deleted=False, created_at__gte=today)
-    this_week_dataset = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                            created_at__range=[first_date_of_week, today])
-    this_month_dataset = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                             created_at__range=[first_date_of_month, today])
-    this_year_dataset = User.objects.filter(is_active=1, status=True, is_deleted=False,
-                                            created_at__range=[first_date_of_year, today])
-    user_context = {'today_dataset': today_dataset, 'this_week_dataset': this_week_dataset,
-                    'this_month_dataset': this_month_dataset, 'this_year_dataset': this_year_dataset}
-
-    context = {'count_user_today': count_user_today, 'count_book_today': count_book_today,
-               
-               'count_user_this_week': count_user_this_week, 'count_book_this_week': count_book_this_week,
-               
-               'count_user_this_month': count_user_this_month, 'count_book_this_month': count_book_this_month,
-               
-               'count_user_this_year': count_user_this_year, 'count_book_this_year': count_book_this_year
-               
-               }
-    return render(request, 'admin/index.html', context, user_context)
-
-```
 #### User_List
 ```
 @login_required
