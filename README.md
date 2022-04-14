@@ -913,4 +913,4 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'admin/User/create.html', {'form': form})
 ```
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=erronny&hide=contribs,prs)](https://github.com/erronny/Library-Management-System)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=erronny&hide=contribs,prs)](https://github.com/erronny/Library-Management-System)  [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=erronny&layout=compact)](https://github.com/erronny/Library-Management-System)
