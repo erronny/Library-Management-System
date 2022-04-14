@@ -378,14 +378,14 @@ urlpatterns = [
     path('admin/delete_book/<id>', views.delete_book, name="delete_book"),
 
     ]
- ```
+```
     These Above codes are url pattern making custom path and calling `view function` from `view page`. Naming the every path with different name beacuse we would be able to call them in frontend eaaly.
 
 ### Auth Module/app segment
 #### Groups and Roles
 We recoding the group or roles of django built-in roles function. Because we want more features and more controls over users. Finally `str()` function returns the group name. We are not going to use it right now but we can use it in future.
 ```
-lass Group(models.Model):
+class Group(models.Model):
     name = models.CharField(max_length=255, blank=False)
     status = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
