@@ -3,7 +3,14 @@
 1. Version
 2. Database
 3. Migrate & Operations
-4. 
+4. Book Module/app segment
+5. Auth Module/app segment
+
+### Executive Summary
+As we know, every web app depends upon CRUD Operations.
+
+### System Overview
+### Guidlines
 
 
 ### Versions 
