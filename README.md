@@ -396,7 +396,7 @@ class Group(models.Model):
         return self.name
  ```
 #### Permissions
-Thsis is the permission table we also going to use i'll explain it later.
+This is the permission table we also going to use i'll explain it later.
 ```
 class Permission(models.Model):
     name = models.CharField(max_length=255, blank=False)
@@ -563,6 +563,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 #### User_List
+Fetching all users from db and storing in context and passing to Template, `User.object.all()` are responsible for that or doing job.
 ```
 @login_required
 def user_list(request):
@@ -573,6 +574,7 @@ def user_list(request):
 
 ```
 #### Create User
+As we talked in Book Segment same things or methods works here, the only password fields are different from other, django taking the password and hashing into their own encrypted form.
 ```
 @login_required
 def create_user(request):
@@ -602,6 +604,8 @@ def create_user(request):
     return render(request, "admin/User/create.html", context)
 ```
 #### Edit User
+`obj = get_object_or_404(User, id=id)` this trying to fetch user by using id if not find it through errors.
+
 ```
 
 @login_required
@@ -834,4 +838,8 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'admin/User/create.html', {'form': form})
 ```
+
+That's it this is an documentry in form of blog if you find or my articles needed to be change or more explanantion, feel free to update. Anyone is allowed to update the ReadMe.
+
+
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=erronny&hide=contribs,prs&show_icons=true&theme=radical)](https://github.com/erronny/Library-Management-System) 
