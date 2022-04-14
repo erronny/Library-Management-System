@@ -395,7 +395,7 @@ class Group(models.Model):
     def __str__(self):
         return self.name
  ```
-#### Permisssions
+#### Permissions
 Thsis is the permission table we also going to use i'll explain it later.
 ```
 class Permission(models.Model):
@@ -411,7 +411,8 @@ class Permission(models.Model):
         return self.name, self.content_type_id, self.codename
 ```
 
-#### Filtering user by superuser and staff roles, UserQuerySet class inherited by django QuerySet that use function for filtering user as per our need, we using two roles type only.
+Filtering user by superuser and staff roles, UserQuerySet class inherited by django QuerySet that use function for filtering user as per our need, we using two roles type only.
+#### UserQuerySet
 ```
 class UserQuerySet(models.QuerySet):
     def superuser(self):
