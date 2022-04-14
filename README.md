@@ -126,7 +126,7 @@ It is an instance method when we search or call for Book Module from anywhere, t
     def __str__(self):
         return self.title
 ```
-\
+
 
 Below we importing render function Http Response function to except route hits, when route hits by user this function response on behalf of type of requests. We also importing login required decorator from auth. Django have built-in decorator we are using them for validation, When any user try to acess that view function these function rejects the request and return error response, OR redirect to login and sign up page. Decorator is an sepcial kind of function that add some special and common functionlity in existing function. It's like decorating christmas tree, tree is an existing function and decorated things are decorator function. 
 
@@ -141,7 +141,7 @@ from .forms import *
 
 
 ```
-\
+
 #### Showing all book data and passing in table
 ```
 # Employee
@@ -156,7 +156,6 @@ def book_list(request):
 ```context = {}``` this is an dictionary named with context
 ```context['dataset'] = Book.objects.filter(is_deleted=False)``` we are storing book by filtering if Book is not deleted then store in context key is dataset.
 ```context['trash'] = Book.objects.filter(is_deleted=True)``` We are storing deleted data by filtering if book is deleted then store in context key is trash.
-\
 
 #### Enabling the status of Book
 Below view is to enable disabled book by status. basically we changing the status of book.
@@ -173,7 +172,7 @@ def enable_book(request, id):
 ``` data_obj = Book.objects.get(id=id)``` data_obj is an variable that stores book by their id then we changing the status column by setting `True`
 Finally we using save function to perform changes operations on databases.
 
-\
+
 
 #### Disabling the status of Book
 Below view is to disable enabled book by status. basically we changing the status of book.
@@ -191,7 +190,7 @@ def disable_book(request, id):
 
 ```data_obj.save(update_fields=["status"])``` Finally we using save function to perform changes operations on databases.
 
-\
+
 
 #### Performing Soft Delete
 Here we deleting book or data from book table logically, but it will never get deleted, it only change the `True` means it perform operation on `is_deleted` column then set `True` So when we fetch the data from table it will show only data with `is_deleted` with `False` Value.
@@ -206,7 +205,7 @@ def trash_book(request, id):
     return HttpResponseRedirect("/"'admin'"/"'book')
 ```
 
-\
+
 
 
 #### Restoring Book
@@ -221,7 +220,7 @@ def restore_book(request, id):
     data_obj.save(update_fields=["is_deleted"])
     return HttpResponseRedirect("/"'admin'"/"'book')
 ```
-\
+
 
 #### Deleting Book
 Finally we Deleting the book from database for permanently, we using hard delete operation and using `delete()` function
@@ -234,7 +233,7 @@ def delete_book(request, id):
     data_obj.delete()
     return HttpResponseRedirect("/"'admin'"/"'book')
 ```
-\
+
 
 #### Adding Book
 We adding Book here, like we using `POST` method to get data from `form` named `BookForm`, calling cleaned_data from django form storing in a variables named data, then accessing them by indexing method using name.
@@ -274,7 +273,7 @@ def add_book(request):
 ```
 We already stored all upcoming data from `BookForm` now we passing all variables `Book()` inside Model by importing, and storing in a variables named `book`. Then saving them using `save()` function. save function run mysql quries to make changes in database.
 
-\
+
 
 #### Changing Existing book
 Also we doing same things we doing in `add_book` view, the changes is, we loading specific data by using their id and passing them in `BookForm` to display using `GET` method then we using post method to store same or updated data coming from `BookForm`.
@@ -314,7 +313,7 @@ def change_book(request, id):
 
 ```
 
-\
+
 ### View Book
 
 It's simple we accessing data by using specific `id`. storing them in a dictionary named context.
