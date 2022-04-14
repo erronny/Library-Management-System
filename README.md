@@ -128,7 +128,7 @@ It is an instance method when we search or call for Book Module from anywhere, t
 ```
 \
 \
-\
+
 Below we importing render function Http Response function to except route hits, when route hits by user this function response on behalf of type of requests. We also importing login required decorator from auth. Django have built-in decorator we are using them for validation, When any user try to acess that view function these function rejects the request and return error response, OR redirect to login and sign up page. Decorator is an sepcial kind of function that add some special and common functionlity in existing function. It's like decorating christmas tree, tree is an existing function and decorated things are decorator function. 
 
 ```
@@ -142,10 +142,10 @@ from .forms import *
 
 
 ```
+\
+\
+#### Showing all book data and passing in table
 ```
-
-
-#########################################################
 # Employee
 @login_required
 def book_list(request):
@@ -160,7 +160,8 @@ def book_list(request):
 ```context['trash'] = Book.objects.filter(is_deleted=True)``` We are storing deleted data by filtering if book is deleted then store in context key is trash.
 \
 \
-\
+
+#### Enabling the status of Book
 Below view is to enable disabled book by status. basically we changing the status of book.
 ```
 @login_required
@@ -177,7 +178,8 @@ Finally we using save function to perform changes operations on databases.
 
 \
 \
-\
+
+#### Disabling the status of Book
 Below view is to disable enabled book by status. basically we changing the status of book.
 ```
 @login_required
@@ -195,8 +197,8 @@ def disable_book(request, id):
 
 \
 \
-\
 
+#### Performing Soft Delete
 Here we deleting book or data from book table logically, but it will never get deleted, it only change the `True` means it perform operation on `is_deleted` column then set `True` So when we fetch the data from table it will show only data with `is_deleted` with `False` Value.
 
 ```
@@ -211,8 +213,9 @@ def trash_book(request, id):
 
 \
 \
-\
 
+
+#### Restoring Book
 Here we Reversing the `is_deleted` column value to 'False`. Means we can restore deleted data from column\
 `data_obj.is_deleted = False` this lines shows we changing the value `False` From `True`
 ```
@@ -226,7 +229,8 @@ def restore_book(request, id):
 ```
 \
 \
-\
+
+#### Deleting Book
 Finally we Deleting the book from database for permanently, we using hard delete operation and using `delete()` function
 
 ```
@@ -239,8 +243,8 @@ def delete_book(request, id):
 ```
 \
 \
-\
 
+#### Adding Book
 We adding Book here, like we using `POST` method to get data from `form` named `BookForm`, calling cleaned_data from django form storing in a variables named data, then accessing them by indexing method using name.
 
 ```
@@ -280,8 +284,8 @@ We already stored all upcoming data from `BookForm` now we passing all variables
 
 \
 \
-\
 
+#### Changing Existing book
 Also we doing same things we doing in `add_book` view, the changes is, we loading specific data by using their id and passing them in `BookForm` to display using `GET` method then we using post method to store same or updated data coming from `BookForm`.
 ```
 @login_required
@@ -319,6 +323,9 @@ def change_book(request, id):
 
 ```
 
+\
+\
+### View Book
 
 It's simple we accessing data by using specific `id`. storing them in a dictionary named context.
 ```
