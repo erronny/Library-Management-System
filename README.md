@@ -913,5 +913,6 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'admin/User/create.html', {'form': form})
 ```
-<img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand&layout=compact"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs?username=erronny"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs?username=erronny&layout=compact"/>
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=erronny&show_icons=true&theme=tokyonight)
