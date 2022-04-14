@@ -314,7 +314,7 @@ def change_book(request, id):
 ```
 
 
-### View Book
+#### View Book
 
 It's simple we accessing data by using specific `id`. storing them in a dictionary named context.
 ```
@@ -327,6 +327,86 @@ def view_book(request, id):
 
 #####################################
 ```
+#### BookForm
+```
+class BookForm(forms.ModelForm):
+
+   
+    title = forms.CharField(label="First Name", required=True, widget=forms.TextInput(
+        attrs={'type': 'text', 'class': 'form-control'}))
+    author = forms.CharField(label="Author", required=False, widget=forms.TextInput(
+        attrs={'type': 'text', 'class': 'form-control'}))
+    
+    
+    book_code = forms.CharField(label="Book Code", required=True, widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    no_of_book = forms.CharField(label="Joining Date", required=True, widget=forms.TextInput(
+        attrs={'type': 'text', 'class': 'form-control'}))   
+    summary = forms.CharField(label="Author", required=True, widget=forms.Textarea(
+        attrs={'class': 'form-control'}))
+   
+
+    class Meta:
+        model = Book
+        fields = ['title', 'author', 'book_code', 'no_of_book', 'summary']
+
+    def clean(self):
+        cleaned_data = super(BookForm, self).clean()
+        title = cleaned_data.get("title")
+        author = cleaned_data.get("author")
+        book_code = cleaned_data.get("book_code")
+        no_of_book = cleaned_data.get("no_of_book")
+        summary = cleaned_data.get("summary")
+        
+        return cleaned_data
+```
+We creating a django form containg with relative fields what ia need. `widget=forms.TextInput()` Using widgets and html classes to makes them responsible no need to redesign and recode for frontend. We using `Meta` class. Basically it is key to tells model how many of fields are going to be changed or how many columns needed for updation.
+Finally we using a function `Clean` using Oops concept of inheritance to inheriting the coming data using `super()` into fields and storing into variables and returning them.
+#### Urls 
+```
+urlpatterns = [
+
+
+    path('admin/book/', views.book_list, name="book"),
+    path('admin/create_book/', views.add_book, name="create_book"),
+    path('admin/change_book/<id>', views.change_book, name="change_book"),
+    path('admin/view_book/<id>', views.view_book, name="view_book"),
+    path('admin/enable_book/<id>', views.enable_book, name="enable_book"),
+    path('admin/disable_book/<id>', views.disable_book, name="disable_book"),
+    path('admin/trash_book/<id>', views.trash_book, name="trash_book"),
+    path('admin/restore_book/<id>', views.restore_book, name="restore_book"),
+    path('admin/delete_book/<id>', views.delete_book, name="delete_book"),
+
+    ]
+    ```
+    These Above codes are url pattern making custom path and calling `view function` from `view page`. Naming the every path with different name beacuse we would be able to call them in frontend eaaly.
 
 ### Auth Module/app segment
+#### Groups and Roles
+We recoding the group or roles of django built-in roles function. Because we want more features and more controls over users. Finally `str()` function returns the group name. We are not going to use it right now but we can use it in future.
+```
+lass Group(models.Model):
+    name = models.CharField(max_length=255, blank=False)
+    status = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateField(default=date.today)
+    updated_at = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+ ```
+#### Permisssions
+Thsis is the permission table we also going to use i'll explain it later.
+```
+class Permission(models.Model):
+    name = models.CharField(max_length=255, blank=False)
+    content_type_id = models.IntegerField(blank=False)
+    codename = models.CharField(max_length=255, blank=False)
+    status = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateField(default=date.today)
+    updated_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name, self.content_type_id, self.codename
+```
